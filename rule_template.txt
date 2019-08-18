@@ -12,6 +12,7 @@ rule malware_1000
     condition:
          $S1 and||or $2
 }
+
 rule malware_1002
 {
     meta:
