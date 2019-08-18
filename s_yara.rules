@@ -27,3 +27,19 @@ rule malware_1002
     condition:
          $S1 and $S2 and $S3
 }
+
+rule malware_1003
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-18"
+        category = "malicious/shell/backdoor"
+        
+    strings:        
+         $S1 = /str_replace\(\$_SERVER\[\'DOCUMENT_ROOT\'\],'',\$_SESSION\['currentdir'\]/
+         $S2 = /AK\-74\sSecurity\sTeam\sWeb\sShell/i
+         $S3 = /\(\(\$perms\s&\s0x[0-9]{4}\)/
+         
+    condition:
+         $S1 and $S2 or $S3
+}
