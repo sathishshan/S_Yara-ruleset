@@ -3,7 +3,7 @@ rule malware_1001
     meta:
         author = "SathishShan"
         last_updated = "2019-08-18"
-        category = "malicious"
+        category = "malicious/phishing/deface"
         
     strings:        
          $S1 = /hacked\s+by/i
