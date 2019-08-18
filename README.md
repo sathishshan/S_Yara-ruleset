@@ -36,3 +36,6 @@ yarac - compile rules to yara
 
  -v show version information.
 ```
+[Yara Full Docmentation.](https://yara.readthedocs.io/en/v3.8.1/)  
+[Writing Yara rules](https://yara.readthedocs.io/en/v3.8.1/writingrules.html)  
+
