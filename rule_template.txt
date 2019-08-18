@@ -12,3 +12,18 @@ rule malware_1000
     condition:
          $S1 and||or $2
 }
+rule malware_1002
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-18"
+        category = "malicious"
+        
+    strings:        
+         $S1 = /b374k/i
+         $S2 = /\$s_pass\s?=/
+         $S3 = /eval\("\?>"\.gzinflate\(base64_decode\("7b2HmtvIsSj8BH4HH/
+         
+    condition:
+         $S1 and $S2 and $S3
+}
