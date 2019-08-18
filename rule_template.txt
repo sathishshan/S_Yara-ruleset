@@ -1,0 +1,14 @@
+rule malware_1000
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-18"
+        category = "malicious"
+        
+    strings:        
+         $S1 = /regex_pattern/
+         $S2 = /regex_pattern/
+         
+    condition:
+         $S1 and||or $2
+}
