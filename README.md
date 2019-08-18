@@ -25,11 +25,10 @@ yara [OPTIONS] RULES_FILE TARGET
      Show help.
 
 ```
-RULES_FILE can be passed directly in source code form, or can be previously compiled with the yarac tool. You may prefer to use your rules in compiled form if you are going to invoke YARA multiple times with the same rules. This way you’ll save time, because for YARA it is faster to load compiled rules than compiling the same rules over and over again.
-```
+- RULES_FILE can be passed directly in source code form, or can be previously compiled with the yarac tool. You may prefer to use your rules in compiled form if you are going to invoke YARA multiple times with the same rules. This way you’ll save time, because for YARA it is faster to load compiled rules than compiling the same rules over and over again.
 
 ### Minimal Yarac Usage:
-
+```
 yarac - compile rules to yara
         yarac [OPTION]... [RULE_FILE]... OUTPUT_FILE
         
