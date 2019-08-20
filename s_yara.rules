@@ -43,3 +43,17 @@ rule malware_1003
     condition:
          $S1 and $S2 or $S3
 }
+
+rule malware_1004
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-20"
+        category = "phishing/shell/backdoor"
+
+    strings:
+         $S1 = /(r57shell|99shell|shellbot|phpshell|bankofamerica.com)/i
+
+    condition:
+         $S1
+}
