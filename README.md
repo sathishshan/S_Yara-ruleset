@@ -1,6 +1,6 @@
 # S_Yara-ruleset ~ Significance_Yara-ruleset
 
-S_yara-ruleset is based on Web Malwares, rules are written in more efficient by using generic and specific malware types.
+S_yara-ruleset is based on Web Malwares, rules are written in more efficient manner by using generic and specific malware types.
 
 ### Minimal Yara Usage:
  ```
