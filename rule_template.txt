@@ -10,5 +10,5 @@ rule malware_1000
          $S2 = /regex_pattern/
          
     condition:
-         $S1 and||or $2
+         $S1 and||or $S2
 }
