@@ -1,3 +1,11 @@
+/*
+ * @package    s_yara-ruleset
+ *--------------------------------------------------------------- 
+ * @copyright  Copyright (C) 2019 Open Source All rights reserved
+ * @license    GNU GENERAL PUBLIC LICENSE Version 3
+ *---------------------------------------------------------------
+ */
+
 rule malware_1001
 {
     meta:
