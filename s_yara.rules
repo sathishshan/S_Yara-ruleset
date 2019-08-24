@@ -105,3 +105,18 @@ rule malware_1007
     condition:
         $S1 and $S2 and $S3
 }
+
+rule malware_1008
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-24"
+        category = "malicious"
+
+    strings:
+        $S1 = /function\s\w{3,15}\(\$\w{1,15},\s\$\w{1,15}\){\$\w{3,7}\s=\s'';\sfor\(\$i=0;\s\$i\s<\sstrlen\(\$\w{0,15}\);\s\$\w{1}\+\+\)\{\$\w{3,7}\s\.=\s\w{0,7}\(\$\w{0,15}\[\$\w{0,15}\[\$\w{1}\]\]\)\s\?\s\$\w{0,10}\[\$\w{0,15}\[\$\w{1}\]\]\s:\s\$\w{0,15}\[\$\w{1}\];}\s\$\w{3,7}="\w{3,7}"\s\.\s"\w{0,10}";\w{0,10}\s\$\w{3,7}\(\$\w{0,10}\);\}/
+	$S2 = /eval\/\*\w{3,10}\*\/\(/
+
+    condition:
+        $S1 and $S2
+}
