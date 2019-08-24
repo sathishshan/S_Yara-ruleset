@@ -57,3 +57,19 @@ rule malware_1004
     condition:
          $S1
 }
+
+rule malware_1005
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-24"
+        category = "malicious/.ico"
+
+    strings:
+         $S1 = /(\/\*\w{3,10}\*\/)\s+@include\s+"\\[A-z0-9\/\.-]+\.i\\[A-z0-9]+";\s+(\/\*\w{3,10}\*\/)/
+         $S2 = /(\/\*\w{3,10}\*\/)/
+         $S3 = /(\.i\\143o";)/
+
+    condition:
+         $S1 or $S2 and $S3
+}
