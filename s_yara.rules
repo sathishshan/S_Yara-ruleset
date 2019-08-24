@@ -63,7 +63,7 @@ rule malware_1005
     meta:
         author = "SathishShan"
         last_updated = "2019-08-24"
-        category = "malicious/.ico file"
+        category = "malicious/.ico"
 
     strings:
          $S1 = /(\/\*\w{3,10}\*\/)\s+@include\s+"\\[A-z0-9\/\.-]+\.i\\[A-z0-9]+";\s+(\/\*\w{3,10}\*\/)/
