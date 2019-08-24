@@ -73,3 +73,19 @@ rule malware_1005
     condition:
          $S1 or $S2 and $S3
 }
+
+rule malware_1006
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-24"
+        category = "malicious"
+
+    strings:
+	$S1 = /\$GLOBALS\['/
+	$S2 = { 247b225c7834375c7834635c783466 }
+        $S3 = /\{eval(\/\*\w{2,10}\*\/)?/
+
+    condition:
+        $S1 and $S2 and $S3
+}
