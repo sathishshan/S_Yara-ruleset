@@ -60,7 +60,7 @@ rule malware_1004
         category = "phishing/shell/backdoor"
 
     strings:
-         $S1 = /(r57shell|99shell|shellbot|phpshell|bankofamerica.com)/i
+         $S1 = /(r57shell|99shell|shellbot|phpshell|bankofamerica\.com)/i
 
     condition:
          $S1
@@ -76,10 +76,10 @@ rule malware_1005
     strings:
          $S1 = /(\/\*\w{3,10}\*\/)\s+@include\s+"\\[A-z0-9\/\.-]+\.i\\[A-z0-9]+";\s+(\/\*\w{3,10}\*\/)/
          $S2 = /(\/\*\w{3,10}\*\/)/
-         $S3 = /(\.i\\143o";)/
+         $S3 = /(@include\s")/
 
     condition:
-         $S1 or $S2 and $S3
+         ($S1) or (#S2 == 2) and ($S3)
 }
 
 rule malware_1006
@@ -159,4 +159,35 @@ rule malware_1010
 
     condition:
 	all of them
+}
+
+rule malware_1011
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-24"
+        category = "malicious/file_upload"
+
+    strings:
+	$S1 = { 245f5345525645525b2752454d4f54455f41444452275d3b }
+	$S2 = { 245f46494c45535b2266696c656e616d65225d5b22746d705f6e616d65225d }
+	$S3 = { 6563686f20223c6120687265663d5c222466696c655c223e2466696c653c2f613e223b }
+
+    condition:
+	all of them
+}
+
+rule malware_1012
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-24"
+        category = "malicious/shell"
+
+    strings:
+         $S1 = { 245f504f53545b246b65795d203d207374726970736c6173686573282476616c7565293b }
+         $S2 = /\(\(\$perms\s&\s0x[0-9]{4}\)/
+
+    condition:
+         $S1 and $S2
 }
