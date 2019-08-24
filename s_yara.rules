@@ -128,3 +128,35 @@ rule malware_1008
     condition:
         $S1 and $S2
 }
+
+rule malware_1009
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-24"
+        category = "malicious"
+
+    strings:
+        $S1 = { 6261736536345f6465636f64652822504439776148414e436d5679636d397958334a6c634739 }
+        $S2 = { 7374725f7265706c61636528226b222c202265222c2073747272657628 }
+        $S3 = { 286261736536345f6465636f646528245f504f53545b305d29293b }
+
+    condition:
+        $S1 and $S2 and $S3
+}
+
+rule malware_1010
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-24"
+        category = "malicious"
+
+    strings:
+	$S1 = /substr\/\*\w{1,7}\*\/\(\/\*\w{1,7}\*\/str_repeat\//
+	$S2 = /strlen\/\*\w{1,7}\*\/\(\/\*\w{1,7}\*\//
+	$S3 = /trim\/\*\w{1,7}\*\/\(\/\*\w{1,7}\*\/preg_replace\/\*\w{1,7}\*\/\(\/\*\w{1,7}\*\/rawurldecode/
+
+    condition:
+	all of them
+}
