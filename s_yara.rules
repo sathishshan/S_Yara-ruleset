@@ -79,7 +79,7 @@ rule malware_1005
          $S3 = /(@include\s")/
 
     condition:
-         ($S1) or (#S2 == 2) and ($S3)
+         ($S1) or (#S2 >= 2) and ($S3)
 }
 
 rule malware_1006
