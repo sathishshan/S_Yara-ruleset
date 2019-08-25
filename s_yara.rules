@@ -191,3 +191,53 @@ rule malware_1012
     condition:
          $S1 and $S2
 }
+
+
+
+rule malware_1013
+{
+    meta:
+        author = "prakashnoob"
+        last_updated = "2019-08-25"
+        category = "malicious/backdoor/asp"
+        
+    strings:        
+         $S1 = /pejvak/i
+         $S2 = /hacker/i
+         $S3 = /byp4ss/
+
+         
+    condition:
+         ( $S1 or $S2 ) and $S3
+}
+
+rule malware_1014
+{
+    meta:
+        author = "prakashnoob"
+        last_updated = "2019-08-25"
+        category = "malicious/spam/seo"
+        
+    strings:        
+         $S1 = /OO0O000O00OO0/i
+         $S2 = /MSXML2/
+                  
+    condition:
+         $S1 and $S2
+}
+
+rule malware_1015
+{
+    meta:
+        author = "prakashnoob"
+        last_updated = "2019-08-25"
+        category = "malicious/backdoor/htaccess"
+        
+    strings:        
+         $S1 = /cgi-script/i
+         $S2 = /\.\w*/
+         $S3 = /(\w|\d)\.\w*/
+                  
+    condition:
+         $S1 or $S2 or $S3
+}
