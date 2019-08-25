@@ -192,8 +192,6 @@ rule malware_1012
          $S1 and $S2
 }
 
-
-
 rule malware_1013
 {
     meta:
@@ -205,8 +203,7 @@ rule malware_1013
          $S1 = /pejvak/i
          $S2 = /hacker/i
          $S3 = /byp4ss/
-
-         
+	 
     condition:
          ( $S1 or $S2 ) and $S3
 }
@@ -235,8 +232,7 @@ rule malware_1015
         
     strings:        
          $S1 = /cgi-script /i
-        
-                  
+                      
     condition:
          $S1 
 }
