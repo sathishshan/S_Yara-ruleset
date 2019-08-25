@@ -234,10 +234,9 @@ rule malware_1015
         category = "malicious/backdoor/htaccess"
         
     strings:        
-         $S1 = /cgi-script/i
-         $S2 = /\.\w*/
-         $S3 = /(\w|\d)\.\w*/
+         $S1 = /cgi-script /i
+        
                   
     condition:
-         $S1 or $S2 or $S3
+         $S1 
 }
