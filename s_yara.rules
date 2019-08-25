@@ -153,9 +153,9 @@ rule malware_1010
         category = "malicious"
 
     strings:
-	$S1 = /substr\/\*\w{1,7}\*\/\(\/\*\w{1,7}\*\/str_repeat\//
-	$S2 = /strlen\/\*\w{1,7}\*\/\(\/\*\w{1,7}\*\//
-	$S3 = /trim\/\*\w{1,7}\*\/\(\/\*\w{1,7}\*\/preg_replace\/\*\w{1,7}\*\/\(\/\*\w{1,7}\*\/rawurldecode/
+	$S1 = /basename\/\*\w{1,7}\*\/\(\/\*\w{1,7}\*\/trim\/\*\w{1,7}\*\/\(\/\*\w{1,7}\*\/preg_replace\/\*\w{1,7}\*\/\(\/\*\w{1,7}\*\/rawurldecode/
+	$S2 = /substr\/\*\w{1,7}\*\/\(\/\*\w{1,7}\*\/str_repeat\//
+	$S3 = /strlen\/\*\w{1,7}\*\/\(\/\*\w{1,7}\*\//
 
     condition:
 	all of them
