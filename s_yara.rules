@@ -236,3 +236,34 @@ rule malware_1015
     condition:
          $S1 
 }
+
+rule malware_1016
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-24"
+        category = "malicious/backdoor"
+
+    strings:
+    $S1 = /;\$\w{1,15}\s=\s\w{1,20}\("\@e\\x76\\x61\\x6C/
+    $S2 = /='"\.\$\w{1,15};\$\w{1,5}\('', '}'\.\$\w{1,15}\.'\/\/'\);/
+
+    condition:
+        all of them
+}
+
+rule malware_1017
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-25"
+        category = "malicious/shell"
+        
+    strings:        
+         $S1 = /_']=Array\(base64_decode\('/
+         $S2 = /function\s_\d{1,10}\(\$i\/
+         $S3 = /;\s{0,5}return\s*base64_decode\s*\(\$\w{1}\[\$i\]/
+         
+    condition:
+         all of them
+}
