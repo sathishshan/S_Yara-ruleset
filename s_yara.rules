@@ -267,3 +267,105 @@ rule malware_1017
     condition:
          all of them
 }
+rule malware_1018
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-18"
+        category = "malicious/spam_domains"
+        
+    strings:        
+        $S1 = { 77 73 6b 6f 6e 6e 65 6b 74 2e 63 6f 6d 2f 6a 73 2f 65 78 74 6a 73 2f 65 78 74 2d 70 61 79 6d 65 6e 74 2e 6a 73 0a }
+        $S2 = /https?:\/\/bit\.wo\.tc\/js\/lib\/js\.js/
+         
+    condition:
+         $S1 or $S2
+}
+
+rule malware_1019
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-18"
+        category = "malicious/spam_domains"
+        
+    strings:        
+        $S1 = { 72 6f 64 73 2e 63 6f 6d 2f 6d 65 64 69 61 2f 6a 73 2f 66 36 63 31 39 38 31 30 65 36 64 37 39 39 65 65 39 32 64 33 37 37 64 33 66 64 30 32 63 64 37 63 0a }
+        $S2 = { 62 72 65 77 74 65 65 73 2e 63 6f 6d 2f 77 70 2d 61 64 6d 69 6e 2f 6a 73 2f 75 6e 6f 61 6c 6c 61 }
+        $S3 = { 74 63 69 61 75 74 6f 2e 63 6f 6d 2f 6a 73 2f 6c 69 62 2f 6c 69 67 68 74 62 6f 78 2e 65 6e 63 2e 6a 73 }
+         
+    condition:
+         $S1 or $S2 or $S3
+}
+
+rule malware_1020
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-18"
+        category = "malicious/spam_domains"
+        
+    strings:        
+        $S1 = /web-?rank\.(cc|ws|pw)/
+        $S2 = /web-?stats?\.(me|cc)/
+        $S3 = /mage\-\w{1,7}\.(pw|link)/
+	$S4 = /magescripts\.(pw|info)/
+         
+    condition:
+         $S1 or $S2 or $S3 or $S4
+}
+
+rule malware_1021
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-18"
+        category = "malicious/spam_domains"
+        
+    strings:        
+        $S1 = { 63 6f 6e 66 69 67 73 79 73 72 63 2e 69 6e 66 6f }
+        $S2 = { 67 69 74 6d 61 67 65 2e 63 6f 6d }
+        $S3 = { 77 65 62 73 74 61 74 2d 69 6e 66 6f 2e 77 73 }
+        $S4 = { 75 70 73 2d 62 72 6f 6b 65 72 2e 6f 72 67 }
+        $S5 = { 6c 6f 67 69 73 74 69 63 75 73 61 2e 62 69 7a }
+         
+    condition:
+         $S1 or $S2 or $S3 or $S4 or $S5
+}
+
+rule malware_1022
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-18"
+        category = "malicious/spam_domains"
+        
+    strings:        
+        $S1 = { 74 79 70 65 6b 69 74 2e 77 65 62 73 69 74 65 }
+	$S2 = { 74 72 69 76 61 6c 6c 65 79 78 6d 61 73 6c 69 67 68 74 73 2e 63 6f 6d }
+	$S3 = { 73 69 73 74 65 6d 2d 6a 73 2e 73 75 }
+	$S4 = { 70 61 73 73 2d 6a 73 2e 63 6c 69 63 6b }
+	$S5 = { 73 68 6f 70 2d 61 6e 61 6c 79 74 69 63 73 2e 6e 65 74 }
+                  
+    condition:
+        $S1 or $S2 or $S3 or $S4 or $S5
+}
+
+rule malware_1023
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-18"
+        category = "malicious/spam_domains"
+        
+    strings:        
+        $S1 = { 6f 72 64 65 72 2d 73 65 63 75 72 69 74 79 2e 63 6f 6d }
+	$S2 = { 6d 65 67 61 6c 69 74 68 2d 67 61 6d 65 73 2e 63 6f 6d }
+	$S3 = { 6d 61 67 65 6e 74 6f 70 61 74 63 68 75 70 64 61 74 65 2e 63 6f 6d }
+	$S4 = { 6d 61 67 65 6e 74 6f 2d 63 6f 6e 6e 65 63 74 69 6f 6e 2e 63 6f 6d }
+	$S5 = { 6d 61 67 65 6d 61 72 74 73 2e 63 6f 6d }
+         
+    condition:
+        $S1 or $S2 or $S3 or $S4 or $S5
+}
+
