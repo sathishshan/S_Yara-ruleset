@@ -1,18 +1,4 @@
-rule malware_1017
-{
-    meta:
-        author = "SathishShan"
-        last_updated = "2019-08-25"
-        category = "malicious/shell"
-        
-    strings:        
-         $S1 = /_']=Array\(base64_decode\('/
-         $S2 = /function\s_\d{1,10}\(\$i/
-         $S3 = /;\s{0,5}return\s*base64_decode\s*\(\$\w{1}\[\$i\]/
-         
-    condition:
-         all of them
-}/*
+/*
  * @package    s_yara-ruleset
  *--------------------------------------------------------------- 
  * @copyright  Copyright (C) 2019 Open Source
