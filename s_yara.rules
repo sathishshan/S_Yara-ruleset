@@ -383,7 +383,7 @@ rule malware_1024
         $S3 = /\@file_put_contents\(\$y0\,'JPEG-\.1'\.base64_encode\(\$a5\)\,FILE_APPEND\)/
          
     condition:
-         $S1 or $S2 or $S3
+        $S1 or $S2 or $S3
 }
 
 rule malware_1025
@@ -401,7 +401,7 @@ rule malware_1025
         $S5 = { 65 76 61 6c 28 62 61 73 65 36 34 5f 64 65 63 6f 64 65 28 22 44 51 }
          
     condition:
-         ( $S1 and $S2 and $S3 ) or ( $S4 or $S5 )
+        ( $S1 and $S2 and $S3 ) or ( $S4 or $S5 )
 }
 
 rule malware_1026
@@ -417,5 +417,5 @@ rule malware_1026
         $S3 = /<title>Netflix/i
          
     condition:
-         $S1 or $S2 or $S3
+        ($S1 and $S2 ) or $S3
 }
