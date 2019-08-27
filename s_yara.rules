@@ -14,7 +14,7 @@ rule malware_1001
         category = "malicious/phishing/deface"
         
     strings:        
-         $S1 = /hacked\s+by/i
+         $S1 = /hacked\s*by/i
          
     condition:
          $S1
@@ -369,3 +369,36 @@ rule malware_1023
         $S1 or $S2 or $S3 or $S4 or $S5
 }
 
+rule malware_1024
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-27"
+        category = "malicious"
+        
+    strings:        
+        $S1 = /\@eval\(stripslashes\(\$_REQUEST\[q\]\)\);/
+        $S2 = /isset\(\$_POST\['_'\]\)\)\@setcookie\('_'\,\ \$_POST\['_'\]\);/
+        $S3 = /\@file_put_contents\(\$y0\,'JPEG-\.1'\.base64_encode\(\$a5\)\,FILE_APPEND\)/
+         
+    condition:
+         $S1 or $S2 or $S3
+}
+
+rule malware_1025
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-27"
+        category = "malicious"
+        
+    strings:        
+        $S1 = /aWYgKC/
+        $S2 = /eval\(/
+        $S3 = /base64_decode\(/
+        $S4 = "iKSBvciBzdHJpc3RyKCRyZWZlcmVyLCJ3ZWJhbHRhIikgb3I"
+        $S5 = { 65 76 61 6c 28 62 61 73 65 36 34 5f 64 65 63 6f 64 65 28 22 44 51 }
+         
+    condition:
+         ( $S1 and $S2 and $S3 ) or ( $S4 or $S5 )
+}
