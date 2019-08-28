@@ -433,7 +433,7 @@ rule malware_1027
         $S3 = /janeseste\.87@gmail\.com/
         $S4 = /dbshop\.biz@gmail\.com/
 	$S5 = /javacc@ymail\.com/
-	$S6 =/pepekgorengcok@gmail\.com/
+	$S6 = /pepekgorengcok@gmail\.com/
 
     condition:
         $S1 or $S2 or $S3 or $S4 or $S5 or $S6
