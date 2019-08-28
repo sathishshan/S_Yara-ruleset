@@ -6,9 +6,9 @@ rule malware_1000
         category = "malicious"
         
     strings:        
-         $S1 = /regex_pattern/
-         $S2 = /regex_pattern/
+        $S1 = /regex_pattern/
+        $S2 = /regex_pattern/
          
     condition:
-         $S1 and||or $S2
+        $S1 and||or $S2
 }
