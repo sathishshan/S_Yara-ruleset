@@ -6,384 +6,39 @@
  *---------------------------------------------------------------
  */
 
-rule malware_1001
+ rule malware_1027
 {
     meta:
         author = "SathishShan"
-        last_updated = "2019-08-18"
-        category = "malicious/phishing/deface"
+        last_updated = "2019-08-28"
+        category = "malicious/spam_mails"
         
     strings:        
-         $S1 = /hacked\s*by/i
-         
-    condition:
-         $S1
-}
-
-rule malware_1002
-{
-    meta:
-        author = "SathishShan"
-        last_updated = "2019-08-18"
-        category = "malicious/shell/backdoor"
-        
-    strings:        
-         $S1 = /b374k/i
-         $S2 = /\$s_pass\s?=/
-         $S3 = /eval\("\?>"\.gzinflate\(base64_decode\("7b2HmtvIsSj8BH4HH/
-         
-    condition:
-         $S1 and $S2 and $S3
-}
-
-rule malware_1003
-{
-    meta:
-        author = "SathishShan"
-        last_updated = "2019-08-18"
-        category = "malicious/shell/backdoor"
-        
-    strings:        
-         $S1 = /str_replace\(\$_SERVER\[\'DOCUMENT_ROOT\'\],'',\$_SESSION\['currentdir'\]/
-         $S2 = /AK\-74\sSecurity\sTeam\sWeb\sShell/i
-         $S3 = /\(\(\$perms\s&\s0x[0-9]{4}\)/
-         
-    condition:
-         $S1 and $S2 or $S3
-}
-
-rule malware_1004
-{
-    meta:
-        author = "SathishShan"
-        last_updated = "2019-08-20"
-        category = "phishing/shell/backdoor"
-
-    strings:
-         $S1 = /(r57shell|99shell|shellbot|phpshell|bankofamerica\.com)/i
+        $S1 = /tuyulnya\.penjahat@gmail\.com/
+        $S2 = /kun\.cahyono81@gmail\.com/
+        $S3 = /janeseste\.87@gmail\.com/
+        $S4 = /dbshop\.biz@gmail\.com/
+	$S5 = /javacc@ymail\.com/
+	$S6 = /pepekgorengcok@gmail\.com/
 
     condition:
-         $S1
+        $S1 or $S2 or $S3 or $S4 or $S5 or $S6
 }
 
-rule malware_1005
-{
-    meta:
-        author = "SathishShan"
-        last_updated = "2019-08-24"
-        category = "malicious/.ico"
-
-    strings:
-         $S1 = /(\/\*\w{3,10}\*\/)\s+@include\s+"\\[A-z0-9\/\.-]+\.i\\[A-z0-9]+";\s+(\/\*\w{3,10}\*\/)/
-         $S2 = /(\/\*\w{3,10}\*\/)/
-         $S3 = /(@include\s")/
-
-    condition:
-         ($S1) or (#S2 >= 2) and ($S3)
-}
-
-rule malware_1006
-{
-    meta:
-        author = "SathishShan"
-        last_updated = "2019-08-24"
-        category = "malicious"
-
-    strings:
-	$S1 = /\$GLOBALS\['/
-	$S2 = { 247b225c7834375c7834635c783466 }
-        $S3 = /\{eval(\/\*\w{2,10}\*\/)?/
-
-    condition:
-        $S1 and $S2 and $S3
-}
-
-rule malware_1007
-{
-    meta:
-        author = "SathishShan"
-        last_updated = "2019-08-24"
-        category = "malicious"
-
-    strings:
-	$S1 = /\)\s\{eval\(\$\w{3,7}\[[0-9]\]\(/
-	$S2 = /;\$\w{3,7}\s=\sArray\(\);\$\w{3,7}\[\]\s=\s\$\w{3,7}\[[0-9]\]\.\$/
-        $S3 = /foreach\s\(\$\w{3,7}\[[0-9]\]\(\$_COOKIE\,\s\$_POST\)/
-
-    condition:
-        $S1 and $S2 and $S3
-}
-
-rule malware_1008
-{
-    meta:
-        author = "SathishShan"
-        last_updated = "2019-08-24"
-        category = "malicious"
-
-    strings:
-        $S1 = /function\s\w{3,15}\(\$\w{1,15},\s\$\w{1,15}\){\$\w{3,7}\s=\s'';\sfor\(\$i=0;\s\$i\s<\sstrlen\(\$\w{0,15}\);\s\$\w{1}\+\+\)\{\$\w{3,7}\s\.=\s\w{0,7}\(\$\w{0,15}\[\$\w{0,15}\[\$\w{1}\]\]\)\s\?\s\$\w{0,10}\[\$\w{0,15}\[\$\w{1}\]\]\s:\s\$\w{0,15}\[\$\w{1}\];}\s\$\w{3,7}="\w{3,7}"\s\.\s"\w{0,10}";\w{0,10}\s\$\w{3,7}\(\$\w{0,10}\);\}/
-	$S2 = /eval\/\*\w{3,10}\*\/\(/
-
-    condition:
-        $S1 and $S2
-}
-
-rule malware_1009
-{
-    meta:
-        author = "SathishShan"
-        last_updated = "2019-08-24"
-        category = "malicious"
-
-    strings:
-        $S1 = { 6261736536345f6465636f64652822504439776148414e436d5679636d397958334a6c634739 }
-        $S2 = { 7374725f7265706c61636528226b222c202265222c2073747272657628 }
-        $S3 = { 286261736536345f6465636f646528245f504f53545b305d29293b }
-
-    condition:
-        $S1 and $S2 and $S3
-}
-
-rule malware_1010
-{
-    meta:
-        author = "SathishShan"
-        last_updated = "2019-08-24"
-        category = "malicious"
-
-    strings:
-	$S1 = /basename\/\*\w{1,7}\*\/\(\/\*\w{1,7}\*\/trim\/\*\w{1,7}\*\/\(\/\*\w{1,7}\*\/preg_replace\/\*\w{1,7}\*\/\(\/\*\w{1,7}\*\/rawurldecode/
-	$S2 = /substr\/\*\w{1,7}\*\/\(\/\*\w{1,7}\*\/str_repeat\//
-	$S3 = /strlen\/\*\w{1,7}\*\/\(\/\*\w{1,7}\*\//
-
-    condition:
-	all of them
-}
-
-rule malware_1011
-{
-    meta:
-        author = "SathishShan"
-        last_updated = "2019-08-24"
-        category = "malicious/file_upload"
-
-    strings:
-	$S1 = { 245f5345525645525b2752454d4f54455f41444452275d3b }
-	$S2 = { 245f46494c45535b2266696c656e616d65225d5b22746d705f6e616d65225d }
-	$S3 = { 6563686f20223c6120687265663d5c222466696c655c223e2466696c653c2f613e223b }
-
-    condition:
-	all of them
-}
-
-rule malware_1012
-{
-    meta:
-        author = "SathishShan"
-        last_updated = "2019-08-24"
-        category = "malicious/shell"
-
-    strings:
-         $S1 = { 245f504f53545b246b65795d203d207374726970736c6173686573282476616c7565293b }
-         $S2 = /\(\(\$perms\s&\s0x[0-9]{4}\)/
-
-    condition:
-         $S1 and $S2
-}
-
-rule malware_1013
-{
-    meta:
-        author = "prakashnoob"
-        last_updated = "2019-08-25"
-        category = "malicious/backdoor/asp"
-        
-    strings:        
-         $S1 = /pejvak/i
-         $S2 = /hacker/i
-         $S3 = /byp4ss/
-	 
-    condition:
-         ( $S1 or $S2 ) and $S3
-}
-
-rule malware_1014
-{
-    meta:
-        author = "prakashnoob"
-        last_updated = "2019-08-25"
-        category = "malicious/spam/seo"
-        
-    strings:        
-         $S1 = /OO0O000O00OO0/i
-         $S2 = /MSXML2/
-                  
-    condition:
-         $S1 and $S2
-}
-
-rule malware_1015
-{
-    meta:
-        author = "prakashnoob"
-        last_updated = "2019-08-25"
-        category = "malicious/backdoor/htaccess"
-        
-    strings:        
-         $S1 = /cgi-script /i
-                      
-    condition:
-         $S1 
-}
-
-rule malware_1016
-{
-    meta:
-        author = "SathishShan"
-        last_updated = "2019-08-24"
-        category = "malicious/backdoor"
-
-    strings:
-    $S1 = /;\$\w{1,15}\s=\s\w{1,20}\("\@e\\x76\\x61\\x6C/
-    $S2 = /='"\.\$\w{1,15};\$\w{1,5}\('', '}'\.\$\w{1,15}\.'\/\/'\);/
-
-    condition:
-        all of them
-}
-
-rule malware_1017
-{
-    meta:
-        author = "SathishShan"
-        last_updated = "2019-08-25"
-        category = "malicious/shell"
-        
-    strings:        
-         $S1 = /_']=Array\(base64_decode\('/
-         $S2 = /function\s_\d{1,10}\(\$i/
-         $S3 = /;\s{0,5}return\s*base64_decode\s*\(\$\w{1}\[\$i\]/
-         
-    condition:
-         all of them
-}
-
-rule malware_1018
-{
-    meta:
-        author = "SathishShan"
-        last_updated = "2019-08-18"
-        category = "malicious/spam_domains"
-        
-    strings:        
-        $S1 = { 77 73 6b 6f 6e 6e 65 6b 74 2e 63 6f 6d 2f 6a 73 2f 65 78 74 6a 73 2f 65 78 74 2d 70 61 79 6d 65 6e 74 2e 6a 73 }
-        $S2 = /https?:\/\/bit\.wo\.tc\/js\/lib\/js\.js/
-         
-    condition:
-         $S1 or $S2
-}
-
-rule malware_1019
-{
-    meta:
-        author = "SathishShan"
-        last_updated = "2019-08-18"
-        category = "malicious/spam_domains"
-        
-    strings:        
-        $S1 = { 72 6f 64 73 2e 63 6f 6d 2f 6d 65 64 69 61 2f 6a 73 2f 66 36 63 31 39 38 31 30 65 36 64 37 39 39 65 65 39 32 64 33 37 37 64 33 66 64 30 32 63 64 37 63 }
-        $S2 = { 62 72 65 77 74 65 65 73 2e 63 6f 6d 2f 77 70 2d 61 64 6d 69 6e 2f 6a 73 2f 75 6e 6f 61 6c 6c 61 }
-        $S3 = { 74 63 69 61 75 74 6f 2e 63 6f 6d 2f 6a 73 2f 6c 69 62 2f 6c 69 67 68 74 62 6f 78 2e 65 6e 63 2e 6a 73 }
-         
-    condition:
-         $S1 or $S2 or $S3
-}
-
-rule malware_1020
-{
-    meta:
-        author = "SathishShan"
-        last_updated = "2019-08-18"
-        category = "malicious/spam_domains"
-        
-    strings:        
-        $S1 = /web-?rank\.(cc|ws|pw)/
-        $S2 = /web-?stats?\.(me|cc)/
-        $S3 = /mage\-\w{1,7}\.(pw|link)/
-	$S4 = /magescripts\.(pw|info)/
-         
-    condition:
-         $S1 or $S2 or $S3 or $S4
-}
-
-rule malware_1021
-{
-    meta:
-        author = "SathishShan"
-        last_updated = "2019-08-18"
-        category = "malicious/spam_domains"
-        
-    strings:        
-        $S1 = { 63 6f 6e 66 69 67 73 79 73 72 63 2e 69 6e 66 6f }
-        $S2 = { 67 69 74 6d 61 67 65 2e 63 6f 6d }
-        $S3 = { 77 65 62 73 74 61 74 2d 69 6e 66 6f 2e 77 73 }
-        $S4 = { 75 70 73 2d 62 72 6f 6b 65 72 2e 6f 72 67 }
-        $S5 = { 6c 6f 67 69 73 74 69 63 75 73 61 2e 62 69 7a }
-         
-    condition:
-         $S1 or $S2 or $S3 or $S4 or $S5
-}
-
-rule malware_1022
-{
-    meta:
-        author = "SathishShan"
-        last_updated = "2019-08-18"
-        category = "malicious/spam_domains"
-        
-    strings:        
-        $S1 = { 74 79 70 65 6b 69 74 2e 77 65 62 73 69 74 65 }
-	$S2 = { 74 72 69 76 61 6c 6c 65 79 78 6d 61 73 6c 69 67 68 74 73 2e 63 6f 6d }
-	$S3 = { 73 69 73 74 65 6d 2d 6a 73 2e 73 75 }
-	$S4 = { 70 61 73 73 2d 6a 73 2e 63 6c 69 63 6b }
-	$S5 = { 73 68 6f 70 2d 61 6e 61 6c 79 74 69 63 73 2e 6e 65 74 }
-                  
-    condition:
-        $S1 or $S2 or $S3 or $S4 or $S5
-}
-
-rule malware_1023
-{
-    meta:
-        author = "SathishShan"
-        last_updated = "2019-08-18"
-        category = "malicious/spam_domains"
-        
-    strings:        
-        $S1 = { 6f 72 64 65 72 2d 73 65 63 75 72 69 74 79 2e 63 6f 6d }
-	$S2 = { 6d 65 67 61 6c 69 74 68 2d 67 61 6d 65 73 2e 63 6f 6d }
-	$S3 = { 6d 61 67 65 6e 74 6f 70 61 74 63 68 75 70 64 61 74 65 2e 63 6f 6d }
-	$S4 = { 6d 61 67 65 6e 74 6f 2d 63 6f 6e 6e 65 63 74 69 6f 6e 2e 63 6f 6d }
-	$S5 = { 6d 61 67 65 6d 61 72 74 73 2e 63 6f 6d }
-         
-    condition:
-        $S1 or $S2 or $S3 or $S4 or $S5
-}
-
-rule malware_1024
+rule malware_1026
 {
     meta:
         author = "SathishShan"
         last_updated = "2019-08-27"
-        category = "malicious"
+        category = "malicious/spam"
         
     strings:        
-        $S1 = /\@eval\(stripslashes\(\$_REQUEST\[q\]\)\);/
-        $S2 = /isset\(\$_POST\['_'\]\)\)\@setcookie\('_'\,\ \$_POST\['_'\]\);/
-        $S3 = /\@file_put_contents\(\$y0\,'JPEG-\.1'\.base64_encode\(\$a5\)\,FILE_APPEND\)/
+        $S1 = /PayPal/i
+        $S2 = /PayPal<\/title>/i
+        $S3 = /<title>Netflix/i
          
     condition:
-        $S1 or $S2 or $S3
+        ($S1 and $S2 ) or $S3
 }
 
 rule malware_1025
@@ -404,37 +59,378 @@ rule malware_1025
         ( $S1 and $S2 and $S3 ) or ( $S4 or $S5 )
 }
 
-rule malware_1026
+rule malware_1024
 {
     meta:
         author = "SathishShan"
         last_updated = "2019-08-27"
-        category = "malicious/spam"
+        category = "malicious"
         
     strings:        
-        $S1 = /PayPal/i
-        $S2 = /PayPal<\/title>/i
-        $S3 = /<title>Netflix/i
+        $S1 = /\@eval\(stripslashes\(\$_REQUEST\[q\]\)\);/
+        $S2 = /isset\(\$_POST\['_'\]\)\)\@setcookie\('_'\,\ \$_POST\['_'\]\);/
+        $S3 = /\@file_put_contents\(\$y0\,'JPEG-\.1'\.base64_encode\(\$a5\)\,FILE_APPEND\)/
          
     condition:
-        ($S1 and $S2 ) or $S3
+        $S1 or $S2 or $S3
 }
 
-rule malware_1027
+rule malware_1023
 {
     meta:
         author = "SathishShan"
-        last_updated = "2019-08-28"
-        category = "malicious/spam_mails"
+        last_updated = "2019-08-18"
+        category = "malicious/spam_domains"
         
     strings:        
-        $S1 = /tuyulnya\.penjahat@gmail\.com/
-        $S2 = /kun\.cahyono81@gmail\.com/
-        $S3 = /janeseste\.87@gmail\.com/
-        $S4 = /dbshop\.biz@gmail\.com/
-	$S5 = /javacc@ymail\.com/
-	$S6 = /pepekgorengcok@gmail\.com/
+        $S1 = { 6f 72 64 65 72 2d 73 65 63 75 72 69 74 79 2e 63 6f 6d }
+$S2 = { 6d 65 67 61 6c 69 74 68 2d 67 61 6d 65 73 2e 63 6f 6d }
+$S3 = { 6d 61 67 65 6e 74 6f 70 61 74 63 68 75 70 64 61 74 65 2e 63 6f 6d }
+$S4 = { 6d 61 67 65 6e 74 6f 2d 63 6f 6e 6e 65 63 74 69 6f 6e 2e 63 6f 6d }
+$S5 = { 6d 61 67 65 6d 61 72 74 73 2e 63 6f 6d }
+         
+    condition:
+        $S1 or $S2 or $S3 or $S4 or $S5
+}
+
+rule malware_1022
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-18"
+        category = "malicious/spam_domains"
+        
+    strings:        
+        $S1 = { 74 79 70 65 6b 69 74 2e 77 65 62 73 69 74 65 }$S2 = { 74 72 69 76 61 6c 6c 65 79 78 6d 61 73 6c 69 67 68 74 73 2e 63 6f 6d }$S3 = { 73 69 73 74 65 6d 2d 6a 73 2e 73 75 }$S4 = { 70 61 73 73 2d 6a 73 2e 63 6c 69 63 6b }$S5 = { 73 68 6f 70 2d 61 6e 61 6c 79 74 69 63 73 2e 6e 65 74 }
+                  
+    condition:
+        $S1 or $S2 or $S3 or $S4 or $S5
+}
+
+rule malware_1021
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-18"
+        category = "malicious/spam_domains"
+        
+    strings:        
+        $S1 = { 63 6f 6e 66 69 67 73 79 73 72 63 2e 69 6e 66 6f }
+        $S2 = { 67 69 74 6d 61 67 65 2e 63 6f 6d }
+        $S3 = { 77 65 62 73 74 61 74 2d 69 6e 66 6f 2e 77 73 }
+        $S4 = { 75 70 73 2d 62 72 6f 6b 65 72 2e 6f 72 67 }
+        $S5 = { 6c 6f 67 69 73 74 69 63 75 73 61 2e 62 69 7a }
+         
+    condition:
+        $S1 or $S2 or $S3 or $S4 or $S5
+}
+
+rule malware_1020
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-18"
+        category = "malicious/spam_domains"
+        
+    strings:        
+        $S1 = /web-?rank\.(cc|ws|pw)/
+        $S2 = /web-?stats?\.(me|cc)/
+        $S3 = /mage\-\w{1,7}\.(pw|link)/
+	$S4 = /magescripts\.(pw|info)/
+         
+    condition:
+        $S1 or $S2 or $S3 or $S4
+}
+
+rule malware_1019
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-18"
+        category = "malicious/spam_domains"
+        
+    strings:        
+        $S1 = { 72 6f 64 73 2e 63 6f 6d 2f 6d 65 64 69 61 2f 6a 73 2f 66 36 63 31 39 38 31 30 65 36 64 37 39 39 65 65 39 32 64 33 37 37 64 33 66 64 30 32 63 64 37 63 }
+        $S2 = { 62 72 65 77 74 65 65 73 2e 63 6f 6d 2f 77 70 2d 61 64 6d 69 6e 2f 6a 73 2f 75 6e 6f 61 6c 6c 61 }
+        $S3 = { 74 63 69 61 75 74 6f 2e 63 6f 6d 2f 6a 73 2f 6c 69 62 2f 6c 69 67 68 74 62 6f 78 2e 65 6e 63 2e 6a 73 }
+         
+    condition:
+        $S1 or $S2 or $S3
+}
+
+rule malware_1018
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-18"
+        category = "malicious/spam_domains"
+        
+    strings:        
+        $S1 = { 77 73 6b 6f 6e 6e 65 6b 74 2e 63 6f 6d 2f 6a 73 2f 65 78 74 6a 73 2f 65 78 74 2d 70 61 79 6d 65 6e 74 2e 6a 73 }
+        $S2 = /https?:\/\/bit\.wo\.tc\/js\/lib\/js\.js/
+         
+    condition:
+        $S1 or $S2
+}
+
+rule malware_1017
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-25"
+        category = "malicious/shell"
+        
+    strings:        
+        $S1 = /_']=Array\(base64_decode\('/
+        $S2 = /function\s_\d{1,10}\(\$i/
+        $S3 = /;\s{0,5}return\s*base64_decode\s*\(\$\w{1}\[\$i\]/
+         
+    condition:
+        all of them
+}
+
+rule malware_1016
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-24"
+        category = "malicious/backdoor"
+
+    strings:
+    	$S1 = /;\$\w{1,15}\s=\s\w{1,20}\("\@e\\x76\\x61\\x6C/
+    	$S2 = /='"\.\$\w{1,15};\$\w{1,5}\('', '}'\.\$\w{1,15}\.'\/\/'\);/
 
     condition:
-        $S1 or $S2 or $S3 or $S4 or $S5 or $S6
+        all of them
+}
+
+rule malware_1015
+{
+    meta:
+        author = "prakashnoob"
+        last_updated = "2019-08-25"
+        category = "malicious/backdoor/htaccess"
+        
+    strings:        
+        $S1 = /cgi-script /i
+                      
+    condition:
+        $S1 
+}
+
+rule malware_1014
+{
+    meta:
+        author = "prakashnoob"
+        last_updated = "2019-08-25"
+        category = "malicious/spam/seo"
+        
+    strings:        
+        $S1 = /OO0O000O00OO0/i
+        $S2 = /MSXML2/
+                  
+    condition:
+        $S1 and $S2
+}
+
+rule malware_1013
+{
+    meta:
+        author = "prakashnoob"
+        last_updated = "2019-08-25"
+        category = "malicious/backdoor/asp"
+        
+    strings:        
+        $S1 = /pejvak/i
+        $S2 = /hacker/i
+        $S3 = /byp4ss/
+	 
+    condition:
+        ( $S1 or $S2 ) and $S3
+}
+
+rule malware_1012
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-24"
+        category = "malicious/shell"
+
+    strings:
+        $S1 = { 245f504f53545b246b65795d203d207374726970736c6173686573282476616c7565293b }
+        $S2 = /\(\(\$perms\s&\s0x[0-9]{4}\)/
+
+    condition:
+        $S1 and $S2
+}
+
+rule malware_1011
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-24"
+        category = "malicious/file_upload"
+
+    strings:
+	$S1 = { 245f5345525645525b2752454d4f54455f41444452275d3b }
+	$S2 = { 245f46494c45535b2266696c656e616d65225d5b22746d705f6e616d65225d }
+	$S3 = { 6563686f20223c6120687265663d5c222466696c655c223e2466696c653c2f613e223b }
+
+    condition:
+	all of them
+}
+
+rule malware_1010
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-24"
+        category = "malicious"
+
+    strings:
+	$S1 = /basename\/\*\w{1,7}\*\/\(\/\*\w{1,7}\*\/trim\/\*\w{1,7}\*\/\(\/\*\w{1,7}\*\/preg_replace\/\*\w{1,7}\*\/\(\/\*\w{1,7}\*\/rawurldecode/
+	$S2 = /substr\/\*\w{1,7}\*\/\(\/\*\w{1,7}\*\/str_repeat\//
+	$S3 = /strlen\/\*\w{1,7}\*\/\(\/\*\w{1,7}\*\//
+
+    condition:
+	all of them
+}
+
+rule malware_1009
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-24"
+        category = "malicious"
+
+    strings:
+        $S1 = { 6261736536345f6465636f64652822504439776148414e436d5679636d397958334a6c634739 }
+        $S2 = { 7374725f7265706c61636528226b222c202265222c2073747272657628 }
+        $S3 = { 286261736536345f6465636f646528245f504f53545b305d29293b }
+
+    condition:
+        $S1 and $S2 and $S3
+}
+
+rule malware_1008
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-24"
+        category = "malicious"
+
+    strings:
+        $S1 = /function\s\w{3,15}\(\$\w{1,15},\s\$\w{1,15}\){\$\w{3,7}\s=\s'';\sfor\(\$i=0;\s\$i\s<\sstrlen\(\$\w{0,15}\);\s\$\w{1}\+\+\)\{\$\w{3,7}\s\.=\s\w{0,7}\(\$\w{0,15}\[\$\w{0,15}\[\$\w{1}\]\]\)\s\?\s\$\w{0,10}\[\$\w{0,15}\[\$\w{1}\]\]\s:\s\$\w{0,15}\[\$\w{1}\];}\s\$\w{3,7}="\w{3,7}"\s\.\s"\w{0,10}";\w{0,10}\s\$\w{3,7}\(\$\w{0,10}\);\}/
+	$S2 = /eval\/\*\w{3,10}\*\/\(/
+
+    condition:
+        $S1 and $S2
+}
+
+rule malware_1007
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-24"
+        category = "malicious"
+
+    strings:
+	$S1 = /\)\s\{eval\(\$\w{3,7}\[[0-9]\]\(/
+	$S2 = /;\$\w{3,7}\s=\sArray\(\);\$\w{3,7}\[\]\s=\s\$\w{3,7}\[[0-9]\]\.\$/
+        $S3 = /foreach\s\(\$\w{3,7}\[[0-9]\]\(\$_COOKIE\,\s\$_POST\)/
+
+    condition:
+        $S1 and $S2 and $S3
+}
+
+rule malware_1006
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-24"
+        category = "malicious"
+
+    strings:
+		$S1 = /\$GLOBALS\['/
+		$S2 = { 247b225c7834375c7834635c783466 }
+        $S3 = /\{eval(\/\*\w{2,10}\*\/)?/
+
+    condition:
+        $S1 and $S2 and $S3
+}
+
+rule malware_1005
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-24"
+        category = "malicious/.ico"
+
+    strings:
+        $S1 = /(\/\*\w{3,10}\*\/)\s+@include\s+"\\[A-z0-9\/\.-]+\.i\\[A-z0-9]+";\s+(\/\*\w{3,10}\*\/)/
+        $S2 = /(\/\*\w{3,10}\*\/)/
+        $S3 = /(@include\s")/
+
+    condition:
+        ($S1) or (#S2 >= 2) and ($S3)
+}
+
+rule malware_1004
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-20"
+        category = "phishing/shell/backdoor"
+
+    strings:
+        $S1 = /(r57shell|99shell|shellbot|phpshell|bankofamerica\.com)/i
+
+    condition:
+        $S1
+}
+
+rule malware_1003
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-18"
+        category = "malicious/shell/backdoor"
+        
+    strings:        
+        $S1 = /str_replace\(\$_SERVER\[\'DOCUMENT_ROOT\'\],'',\$_SESSION\['currentdir'\]/
+        $S2 = /AK\-74\sSecurity\sTeam\sWeb\sShell/i
+        $S3 = /\(\(\$perms\s&\s0x[0-9]{4}\)/
+         
+    condition:
+        $S1 and $S2 or $S3
+}
+
+rule malware_1002
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-18"
+        category = "malicious/shell/backdoor"
+        
+    strings:        
+        $S1 = /b374k/i
+        $S2 = /\$s_pass\s?=/
+        $S3 = /eval\("\?>"\.gzinflate\(base64_decode\("7b2HmtvIsSj8BH4HH/
+         
+    condition:
+        $S1 and $S2 and $S3
+}
+
+rule malware_1001
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-18"
+        category = "malicious/phishing/deface"
+        
+    strings:        
+        $S1 = /hacked\s*by/i
+         
+    condition:
+        $S1
 }
