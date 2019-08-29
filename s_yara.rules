@@ -6,7 +6,206 @@
  *---------------------------------------------------------------
  */
 
- rule malware_1027
+rule malware_1038
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-18"
+        category = "malicious"
+        
+    strings:        
+       	$S1 = /7P1pe\+O4sTCAfs\/z5D\+wFWfajmVtlrd22zPUatnW7lXdfR1KpCRaC9WkFss5fX\/7rSqAJLhIlntmcnLeGyfTNrEUCgWgUCgUqv72t41/
+	$S2 = /if\(\@copy\(\$_FILES\['file'\]\['tmp_name'\],\s\$_FILES\['file'\]\['name'\]\)\)\s{\ echo\s'<b>SecUpdates\suploaded<\/b><br><br>';\s}/
+	$S3 = /@file_put_contents\(\$y0\,'JPEG-\.1'\.base64_encode\(\$a5\)\,FILE_APPEND\)/
+	$S4 = /\$data=json_encode\(array\('request'=>\$_REQUEST\,\ 'ip'=>\$_SERVER\['REMOTE_ADDR'\]/
+	$S5 = /105,102,40,40,110,101,119,32,82,101,103,69,120,112,40,39,111,110,101,112,97,103,101/
+
+    condition:
+        $S1 or $S2 or $S3 or $S4 or $S5
+}
+
+rule malware_1037
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-18"
+        category = "malicious"
+        
+    strings:        
+       	$S1 = /stripos\(\$buf,\s'Visbot'\)!==false\s&&\sstripos\(\$buf,\s'Pong'\)(!==false)?/
+	$S2 = /\)\)unlink\('\.\.\/media\/catalog\/category\/'\.basename\(\$/
+	$S3 = /\(preg_match\('admin\sCms_Wysiwyg\sdirective\sindex\s',\s\$_SERVER\['REQUEST_URI'\]\)\)/
+	$S4 = /\.\.\/\.\.\/\.\.\/\.\.\/\.\.\/\.\.\/app\/Mage\.php';\sMage::app\(\);\ var_dump\(Mage::getModel\('sales\/order'\)/
+	$S5 = /include\ '\.\.\/\.\.\/\.\.\/\.\.\/\.\.\/\.\.\/\.\.\/\.\.\/\.\.\/\.\.\/app\/Mage\.php';\ Mage::app\(\);\ \$q\ =\ Mage::getModel\('sales\/quote_payment'\)->getCollection\(\);/
+
+    condition:
+        $S1 or $S2 or $S3 or $S4 or $S5
+}
+
+rule malware_1036
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-18"
+        category = "malicious"
+        
+    strings:        
+       	$S1 = /killall\s-9\s"(\.?|.?)basename\("\/usr\/bin\/host/
+	$S2 = /curl_setopt\(\$ch,\sCURLOPT_POSTFIELDS,http_build_query\(array\('data'=>\$data,'utmp'=>\$id\)\)\);/
+	$S3 = /\$log_entry\s=\sserialize\(\$ARINFO\)/
+	$S4 = /<\?PHP\s\/\*\*\*\sMagento\*\*\sNOTICE\sOF\sLICENSE\*\*\sThis\ssource\s file\s is\ssubject\sto\sthe\sOpen\sSoftware\sLicense\s\(OSL\s3\.0\)\*\sthat\sis\sbundled\swith\sthis\spackage\sin\sthe\sfile\sLICENSE\.txt\.\*\sIt\sis\salso\savailable\sthrough\sthe\sworld-wide-web\sat\sthis\sURL:\*\shttp:\/\/opensource\.org\/licenses\/osl-3\.0\.php\*\*\/\$/
+	$S5 = /\$_SERVER\['HTTP_USER_AGENT'\]\ ==\ 'Visbot\/2\.0\ \(\+http:\/\/www\.visvo\.com\/en\/webmasters\.jsp;bot\@visvo\.com\)/
+
+    condition:
+        $S1 or $S2 or $S3 or $S4 or $S5
+}
+
+rule malware_1035
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-18"
+        category = "malicious"
+        
+    strings:        
+        $S1 = /this\['eval'\]\(this\['atob'\]\(/
+	$S2 = /z=x\['length'\];for\(i=0;i<z;i\+\+\){y\+=String\['fromCharCode'\]\(x\['charCodeAt'\]\(i\)-10\)\ }w=this\['unescape'\]\(y\);this\['eval'\]\(w\);/
+	$S3 = /echo\(\\\"FILE_Bad\\\"\);/
+	$S4 = /if\(preg_match\("\/onepage\|admin\/",\s*\$_SERVER\['REQUEST_URI'\]\)\)\{\s*@?file_put_contents/
+	$S5 = /@?base64_encode\(serialize\(\$_REQUEST\)\."--"\.serialize\(\$_COOKIE\)\)\."\\n",\s*FILE_APPEND\)/
+
+    condition:
+        $S1 or $S2 or $S3 or $S4 or $S5
+}
+	
+rule malware_1034
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-18"
+        category = "malicious"
+        
+    strings:        
+        $S1 = /RegExp\("[0-9]{13,16}"\)/
+	$S2 = /tdsjqu!tsd>#iuuq;00hpphjfqmbz\/jogp0nbhfoup`hpphjfqmbz\/kt#?=0tdsjqu\?/
+	$S3 = /(onepage|onestep|firecheckout|onestepcheckout)/
+	$S4 = /"Admin\sFrom\s"(.?|\.?)\$_SERVER\['HTTP_HOST'\]/
+	$S5 = /isset\(\$_POST\['_'\]\)\)\@setcookie\('_'\,\ \$_POST\['_'\]\);/
+
+    condition:
+        $S1 or $S2 or $S3 or $S4 or $S5
+}
+		
+rule malware_1033
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-18"
+        category = "malicious"
+        
+    strings:        
+        $S1 = /coder\s:\ssohai/
+	$S2 = /Encoder\sby\ssohai\sobfuscation/
+	$S3 = /http:\/\/www\.vrana\.cz/
+	$S4 = /_bug7sec/
+	$S5 = /mage-cdn\.link/
+
+    condition:
+        $S1 or $S2 or $S3 or $S4 or $S5
+}
+
+rule malware_1032
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-18"
+        category = "malicious"
+        
+    strings:        
+        $S1 = /infopromo\.biz/
+	$S2 = /jquery-code\.su/
+	$S3 = /jquery-css\.su/
+	$S4 = /megalith-games\.com/
+	$S5 = /cdn-cloud\.pw/
+	$S6 = /animalzz921\.pw/
+
+    condition:
+        $S1 or $S2 or $S3 or $S4 or $S5 or $S6
+}
+
+rule malware_1031
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-18"
+        category = "malicious"
+        
+    strings:        
+        $S1 = /var\sgrelos_v/
+	$S2 = /grelos_v=\snull/
+	$S3 = /grelos_v=/
+	$S4 = /grelos_v\.send/
+	$S5 = /grelos_v\[_/
+
+    condition:
+        $S1 or $S2 or $S3 or $S4 or $S5
+}
+
+rule malware_1030
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-18"
+        category = "malicious"
+        
+    strings:        
+        $S1 = /\@eval\(stripslashes\(\$_REQUEST\[q\]\)\);/
+	$S2 = /118,97,114,32,115,110,100,32,61,110,117,108,108,59,10,10,102,117/
+	$S3 = /t_p#0\.qlb#0\.#1Blsjj#1\@#\.\?#\.\?dslargml#0\.qr_pr#06#07#5\@#\.\?#0/
+	$S4 = "5e908r948q9e605j8t9b915n5o9f8r5e5d969g9d795b4s6p8t9h9f978o8p8s9590936l6k8j9670524p7490915l5f8r90878t917f7g8p8o8p8k9c605i8d937t7m8i8q8o8q959h7p828e7r8e7q7e8m8o5g5e9199918o9g7q7c8c8t99905a5i8l94989h7r7g8i8t8m5f5o92917q7k9i9e948c919h925a5d8j915h608t8p8t9f937b7k9i9e948c919h92"
+	$S5 = { 2F 6D 65 64 69 61 2F 63 61 74 61 6C 6F 67 2F 70 72 6F 64 75 63 74 2F 63 61 63 68 65 2F 31 2F 74 68 75 6D 62 6E 61 69 6C 2F 37 30 30 78 2F 32 62 66 38 66 32 62 38 64 30 32 38 63 63 65 39 36 2F 42 2F 57 2F 64 61 34 31 38 30 33 63 63 39 38 34 62 38 63 2E 70 68 70 }
+         
+    condition:
+        $S1 or $S2 or $S3 or $S4 or $S5
+}
+
+rule malware_1029
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-18"
+        category = "malicious"
+        
+    strings:        
+        $S1 = /JPEG-1\.1[a-zA-Z0-9\-\/]{32}/
+	$S2 = /error_reporting(0);$f=$_FILES[w+];copy($f[tmp_name],$f[name]);error_reporting(E_ALL);/
+	$S3 = /file_put_contents\(\$.{2,3},'JPEG-1\.1'\.base64_encode/
+	$S4 = /if\(isset\(\$_GET\['do'\]\)\){\$g0='adminhtml\/default\/default\/images/
+	$S5 = /if\(md5\(@\$_COOKIE\[..\]\)=='.{32}'\) \(\$_=@\$_REQUEST\[.\]\).@\$_\(\$_REQUEST\[.\]\);/
+         
+    condition:
+        $S1 or $S2 or $S3 or $S4 or $S5
+}
+
+rule malware_1028
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-18"
+        category = "malicious"
+        
+    strings:        
+        $S1 = /\*\*\sScam\sRedirector/
+	$S2 = /fopen\("cache\.php",\s"w\+"\)/
+	$S3 = /echo\s"IndoXploit\s-\sAuto\sXploiter\\?/
+	$S4 = /<Files [^>]+.(jpg|png|gif)>\s*ForceType\sapplication\/x-httpd-php/
+	$S5 = /attribute_code=0x70617373776f72645f68617368/
+         
+    condition:
+        $S1 or $S2 or $S3 or $S4 or $S5
+}
+
+rule malware_1027
 {
     meta:
         author = "SathishShan"
