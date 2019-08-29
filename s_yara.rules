@@ -10,7 +10,7 @@ rule malware_1038
 {
     meta:
         author = "SathishShan"
-        last_updated = "2019-08-18"
+        last_updated = "2019-08-28"
         category = "malicious"
         
     strings:        
@@ -28,7 +28,7 @@ rule malware_1037
 {
     meta:
         author = "SathishShan"
-        last_updated = "2019-08-18"
+        last_updated = "2019-08-28"
         category = "malicious"
         
     strings:        
@@ -46,7 +46,7 @@ rule malware_1036
 {
     meta:
         author = "SathishShan"
-        last_updated = "2019-08-18"
+        last_updated = "2019-08-28"
         category = "malicious"
         
     strings:        
@@ -64,7 +64,7 @@ rule malware_1035
 {
     meta:
         author = "SathishShan"
-        last_updated = "2019-08-18"
+        last_updated = "2019-08-28"
         category = "malicious"
         
     strings:        
@@ -82,7 +82,7 @@ rule malware_1034
 {
     meta:
         author = "SathishShan"
-        last_updated = "2019-08-18"
+        last_updated = "2019-08-28"
         category = "malicious"
         
     strings:        
@@ -100,8 +100,8 @@ rule malware_1033
 {
     meta:
         author = "SathishShan"
-        last_updated = "2019-08-18"
-        category = "malicious"
+        last_updated = "2019-08-28"
+        category = "malicious/spam"
         
     strings:        
         $S1 = /coder\s:\ssohai/
@@ -118,8 +118,8 @@ rule malware_1032
 {
     meta:
         author = "SathishShan"
-        last_updated = "2019-08-18"
-        category = "malicious"
+        last_updated = "2019-08-28"
+        category = "malicious/spam"
         
     strings:        
         $S1 = /infopromo\.biz/
@@ -137,7 +137,7 @@ rule malware_1031
 {
     meta:
         author = "SathishShan"
-        last_updated = "2019-08-18"
+        last_updated = "2019-08-28"
         category = "malicious"
         
     strings:        
@@ -155,7 +155,7 @@ rule malware_1030
 {
     meta:
         author = "SathishShan"
-        last_updated = "2019-08-18"
+        last_updated = "2019-08-28"
         category = "malicious"
         
     strings:        
@@ -173,7 +173,7 @@ rule malware_1029
 {
     meta:
         author = "SathishShan"
-        last_updated = "2019-08-18"
+        last_updated = "2019-08-28"
         category = "malicious"
         
     strings:        
@@ -191,7 +191,7 @@ rule malware_1028
 {
     meta:
         author = "SathishShan"
-        last_updated = "2019-08-18"
+        last_updated = "2019-08-28"
         category = "malicious"
         
     strings:        
