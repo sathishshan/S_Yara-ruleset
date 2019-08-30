@@ -5,6 +5,132 @@
  * @license    GNU GENERAL PUBLIC LICENSE Version 3
  *---------------------------------------------------------------
  */
+ 
+ rule malware_1045
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-18"
+        category = "malicious"
+        
+    strings:        
+	$S1 = /xx="".constructor;/
+	$S2 = /eval([wd]+($[wd]+, $[wd]+));/
+	$S3 = /eJwlmt2aqjrXbW8pAam9PJwIAVFCEfIDOQPiUwgBKaUUu/
+	$S4 = /document\.getElementById\("ccsave_cc_number"\)\.value/
+	$S5 = /JSON\.stringify\(jQuery\("#co-payment-form"\)/
+         
+    condition:
+        $S1 or $S2 or $S3 or $S4 or $S5
+}
+
+rule malware_1044
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-18"
+        category = "malicious"
+        
+    strings:        
+	$S1 = /querySelectorAll\("input,\sselect,\stextarea,\scheckbox/
+	$S2 = /window\.location\.href,q\.match\(onepage|checkout\)&&\(t\("input,\sselect"\)/
+	$S3 = /window\.Firebug&&window\.Firebug\.chrome&&window\.Firebug\.chrome\.isInitialized/
+	$S4 = /<Files [^>]+.(jpg|png|gif)>\s*ForceType application\/x-httpd-php/
+	$S5 = /enc\+=String\.fromCharCode\(o1,o2,o3\)/
+         
+    condition:
+        $S1 or $S2 or $S3 or $S4 or $S5
+}
+
+rule malware_1043
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-18"
+        category = "malicious"
+        
+    strings:        
+	$S1 = /ZXJyb3JfcmVwb3J0aW5nKDApOw0KaWYg/
+	$S2 = /(href\.match|RegExp)\([^)(]*(checkout|onestep|firecheckout|onestepcheckout|onepagecheckout|onepage|checkout\/onepage)\|[^)(]*\)/
+	$S3 = /file_put_contents\(\$container,\s"\n"\.\$this->encryptSession\(json_encode\(\$data\)\),\sFILE_APPEND\);/
+	$S4 = /String\.fromCharCode\(110,101,119,32/
+	$S5 = /\$strings\s=\s"as";\$strings\s\.=\s"sert";/
+         
+    condition:
+        $S1 or $S2 or $S3 or $S4 or $S5
+}
+
+rule malware_1042
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-18"
+        category = "malicious/spam_domains"
+        
+    strings:        
+	$S1 = /nodejsapi\.net\/gate\.php/
+	$S2 = /(https?:\/\/)?www\.webstatvisit\.com\/js\/jquery-[\d.]{1,7}\.min\.js/
+	$S3 = /ciscostats\.com/
+	$S4 = /https?:\/\/wpconnect\.org/
+	$S5 = /cloud\.wpserve\.org/
+         
+    condition:
+        $S1 or $S2 or $S3 or $S4 or $S5
+}
+
+rule malware_1041
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-18"
+        category = "malicious/spam_domains"
+        
+    strings:        
+	$S1 = /braincdn\.org/
+	$S2 = /configsysrc\.info/
+	$S3 = /invisiblename\.pw/
+	$S4 = /siteverification\.online/
+	$S5 = /webstatistic\.pw/
+        
+    condition:
+        $S1 or $S2 or $S3 or $S4 or $S5
+}
+
+rule malware_1040
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-18"
+        category = "malicious/spam_domains/deface/shell"
+        
+    strings:        
+	$S1 = /wpserve\.org/
+	$S2 = /cloud-wp\.org/
+	$S3 = /MaViA_HaXx0r/i
+	$S4 = /PAYMENT\ PATCHER\ BY\ MOCHA/i
+	$S5 = /MEMBER\ MLM\ TELAH\ LOGIN\ KEMBALI/i
+         
+    condition:
+        $S1 or $S2 or $S3 or $S4 or $S5
+}
+
+rule malware_1039
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-18"
+        category = "malicious/spam_domains"
+        
+    strings:        
+	$S1 = /brewtees\.com\/wp-admin\/js\/fabric\.php/
+	$S2 = /nearart\.com\/js\/mage\/service\/fabric\.php/
+	$S3 = /magento\.erpflex\.com\.br\/media\/catalog\/product\/cache\/1\/stat/
+	$S4 = /walletgear\.org\/src\//
+	$S5 = /baterky-noze\.sk\/modules\/statsdata\/js\/statistics\.js/
+
+    condition:
+        $S1 or $S2 or $S3 or $S4 or $S5
+}
 
 rule malware_1038
 {
