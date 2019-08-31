@@ -280,7 +280,7 @@ rule malware_1045
 {
     meta:
         author = "SathishShan"
-        last_updated = "2019-08-18"
+        last_updated = "2019-08-29"
         category = "malicious"
         
     strings:        
@@ -298,7 +298,7 @@ rule malware_1044
 {
     meta:
         author = "SathishShan"
-        last_updated = "2019-08-18"
+        last_updated = "2019-08-29"
         category = "malicious"
         
     strings:        
@@ -316,7 +316,7 @@ rule malware_1043
 {
     meta:
         author = "SathishShan"
-        last_updated = "2019-08-18"
+        last_updated = "2019-08-29"
         category = "malicious"
         
     strings:        
@@ -334,7 +334,7 @@ rule malware_1042
 {
     meta:
         author = "SathishShan"
-        last_updated = "2019-08-18"
+        last_updated = "2019-08-29"
         category = "malicious/spam_domains"
         
     strings:        
@@ -352,7 +352,7 @@ rule malware_1041
 {
     meta:
         author = "SathishShan"
-        last_updated = "2019-08-18"
+        last_updated = "2019-08-29"
         category = "malicious/spam_domains"
         
     strings:        
@@ -370,7 +370,7 @@ rule malware_1040
 {
     meta:
         author = "SathishShan"
-        last_updated = "2019-08-18"
+        last_updated = "2019-08-29"
         category = "malicious/spam_domains/deface/shell"
         
     strings:        
@@ -388,7 +388,7 @@ rule malware_1039
 {
     meta:
         author = "SathishShan"
-        last_updated = "2019-08-18"
+        last_updated = "2019-08-29"
         category = "malicious/spam_domains"
         
     strings:        
