@@ -6,7 +6,277 @@
  *---------------------------------------------------------------
  */
  
- rule malware_1045
+rule malware_1060
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-30"
+        category = "malicious/spam_domains"
+        
+    strings:        
+        $S1 = /mage-storage\.pw/
+		$S2 = /magemarts\.com/
+		$S3 = /magento-connection\.com/
+		$S4 = /magentopatchupdate\.com/
+		$S5 = /magescripts\.info/
+         
+    condition:
+        $S1 or $S2 or $S3 or $S4 or $S5
+}		
+
+rule malware_1059
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-30"
+        category = "malicious/spam_domains"
+        
+    strings:        
+        $S1 = /magescripts\.pw/
+		$S2 = /megalith-games\.com/
+		$S3 = /order-security\.com/
+		$S4 = /pass-js\.click/
+		$S5 = /shop-analytics\.net/
+         
+    condition:
+        $S1 or $S2 or $S3 or $S4 or $S5
+}
+
+rule malware_1058
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-30"
+        category = "malicious/spam_domains"
+        
+    strings:        
+        $S1 = /sistem-js\.su/
+		$S2 = /system-backup\.biz/
+		$S3 = /trafficanalyzer\.biz/
+		$S4 = /trivalleyxmaslights\.com/
+		$S5 = /typekit\.website/
+         
+    condition:
+        $S1 or $S2 or $S3 or $S4 or $S5
+}
+
+rule malware_1057
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-30"
+        category = "malicious/spam_domains"
+        
+    strings:        
+        $S1 = /web-rank\.cc/
+		$S2 = /web-rank\.pw/
+		$S3 = /web-rank\.pw/
+		$S4 = /web-stat\.me/
+		$S5 = /web-stats\.cc/
+         
+    condition:
+        $S1 or $S2 or $S3 or $S4 or $S5
+}
+
+rule malware_1056
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-30"
+        category = "malicious/spam_domains"
+        
+    strings:        
+        $S1 = /animalzz921\.pw/
+		$S2 = /cdn-cloud\.pw/
+		$S3 = /cloud-update\.top/
+		$S4 = /cloudfusion\.me/
+		$S5 = /cloudservice\.tw/
+
+         
+    condition:
+        $S1 or $S2 or $S3 or $S4 or $S5
+}
+
+rule malware_1055
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-30"
+        category = "malicious/spam_domains"
+        
+    strings:        
+        $S1 = /ebizmart\.biz/
+		$S2 = /https:\/\/www\.web-rank\.cc\/media\/cookie\.js/
+		$S3 = /air-frog33\.pw/
+		$S4 = /amasty\.biz/
+		$S5 = /analiticoscdn\.com/
+         
+    condition:
+        $S1 or $S2 or $S3 or $S4 or $S5
+}
+
+rule malware_1054
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-30"
+        category = "malicious/spam_domains"
+        
+    strings:        
+        $S1 = /ebizmart\.biz/
+		$S2 = /http:\/\/www\.telize\.com\/geoip\/"\.\$ipboss/
+		$S3 = /magentopatchupdate\.com/
+		$S4 = /https:\/\/bins\.ribbon\.co/
+		$S5 = /specialsok\.tgz/
+         
+    condition:
+        $S1 or $S2 or $S3 or $S4 or $S5
+}
+
+rule malware_1053
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-30"
+        category = "malicious/spam_domains"
+        
+    strings:        
+        $S1 = /optimizly\.info/
+		$S2 = /siteverification\.online/
+		$S3 = /webstatistic\.pw/
+		$S4 = /wpserve\.org/
+		$S5 = /amasty\.biz/
+         
+    condition:
+        $S1 or $S2 or $S3 or $S4 or $S5
+}
+
+rule malware_1052
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-30"
+        category = "malicious/spam_domains"
+        
+    strings:        
+        $S1 = /statsdot\.eu/
+		$S2 = /braincdn\.org/
+		$S3 = /configsysrc\.info/
+		$S4 = /invisiblename\.com/
+		$S5 = /invisiblename\.pw/
+         
+    condition:
+        $S1 or $S2 or $S3 or $S4 or $S5
+}
+
+rule malware_1051
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-30"
+        category = "malicious/spam_domains"
+        
+    strings:        
+        $S1 = /ebizmart\.biz/
+		$S2 = /infopromo\.biz/
+		$S3 = /informaer\.net/
+		$S4 = /inst-js\.su/
+		$S5 = /ip\.5uu8\.com/
+         
+    condition:
+        $S1 or $S2 or $S3 or $S4 or $S5
+}
+
+rule malware_1050
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-30"
+        category = "malicious/spam_domains"
+        
+    strings:        
+        $S1 = /js-save\.link/
+		$S2 = /js-stats\.click/
+		$S3 = /js-stats\.xyz/
+		$S4 = /js-storage\.click/
+		$S5 = /logisticusa\.biz/
+         
+    condition:
+        $S1 or $S2 or $S3 or $S4 or $S5
+}
+
+rule malware_1049
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-30"
+        category = "malicious/spam_domains"
+        
+    strings:        
+        $S1 = /jquery-libs\.su/
+		$S2 = /jquery-main\.su/
+		$S3 = /jquery-min\.su/
+		$S4 = /jquery-validation\.org/
+		$S5 = /jqueryextd\.us/
+         
+    condition:
+        $S1 or $S2 or $S3 or $S4 or $S5
+}
+
+rule malware_1048
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-30"
+        category = "malicious/spam_domains"
+        
+    strings:        
+        $S1 = /jcloudcnd\.com/
+		$S2 = /jquery-cdnlib\.com/
+		$S3 = /jquery-cloud\.net/
+		$S4 = /jquery-code\.su/
+		$S5 = /jquery-css\.su/
+         
+    condition:
+        $S1 or $S2 or $S3 or $S4 or $S5
+}
+
+rule malware_1047
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-30"
+        category = "malicious/spam_domains"
+        
+    strings:        
+        $S1 = /webstatistic\.tech/
+		$S2 = /sonicmotoshop\.it\/downloader/
+		$S3 = /http:\/\/86\.105\.227\.129/
+         
+    condition:
+        $S1 or $S2 or $S3
+}
+
+rule malware_1046
+{
+    meta:
+        author = "SathishShan"
+        last_updated = "2019-08-30"
+        category = "malicious/spam_emails"
+        
+    strings:        
+        $S1 = /janeseste\.87\@gmail\.com/
+		$S2 = /dbshop\.biz\@gmail\.com/
+		$S3 = /tuyulnya\.penjahat\@gmail\.com/
+		$S4 = /kun\.cahyono81\@gmail\.com/
+		$S5 = /pepekgorengcok\@gmail\.com/
+		$S6 = /logzz\@eduz\.edu/
+         
+    condition:
+        $S1 or $S2 or $S3 or $S4 or $S5 or $S6
+}
+
+rule malware_1045
 {
     meta:
         author = "SathishShan"
